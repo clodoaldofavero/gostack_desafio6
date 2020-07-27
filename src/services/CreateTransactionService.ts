@@ -6,6 +6,7 @@ import TransactionsRepository from '../repositories/TransactionsRepository';
 import CategoriesRepository from '../repositories/CategoriesRepository';
 
 interface Request {
+  title: 'string';
   value: number;
   type: 'income' | 'outcome';
   category: 'string';
@@ -13,6 +14,7 @@ interface Request {
 
 class CreateTransactionService {
   public async execute({
+    title,
     value,
     type,
     category,
@@ -41,6 +43,7 @@ class CreateTransactionService {
     }
 
     const transaction = transactionRepository.create({
+      title,
       value,
       type,
       category_id,
